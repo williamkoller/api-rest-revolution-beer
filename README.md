@@ -12,7 +12,7 @@
 1. open file
    - ` sudo nano /etc/hosts` or `sudo vim /etc/hosts`
 2. Add this line at end of file
-   - `127.0.0.1 api.test.revolution.beer`
+   - `127.0.0.1 api.rest.revolution.beer`
 
 ### To run this project, follow the below steps
 
@@ -25,7 +25,7 @@
    \*`docker-compose up`
 
 ### after completed all steps above, jus click in the link
-[API Holidays](http://api.rest.revolution.beer:3333)
+[API Rest Revolution Beer](http://api.rest.revolution.beer:3333)
 
 #### Useful commands
 
