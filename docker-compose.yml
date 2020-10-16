@@ -1,0 +1,46 @@
+version: '3.2'
+services:
+  api:
+    build: .
+    # context: .
+    # dockerfile: Dockerfile
+    command: sh ./docker-start.sh
+    environment:
+      ENV_SILENT: 'true'
+      DB_CONNECTION: 'pg'
+      DB_DATABASE: 'revolution-beer'
+      DB_USER: 'root'
+      DB_PASSWORD: 'root'
+      DB_PORT: '5432'
+      DB_HOST: 'db'
+
+      NODE_ENV: 'development'
+
+      HOST: '0.0.0.0'
+      PORT: '3333'
+      APP_URL: 'http://0.0.0.0:3333'
+
+
+      CACHE_VIEWS: 'false'
+      APP_KEY: 'kp4G04LlwshGuGRcD5RXe670UA9U2SA3'
+      HASH_DRIVER: 'bcrypt'
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - '3333:3333'
+    networks:
+      - default
+    depends_on:
+      - db
+    links:
+      - db:db
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: 'revolution-beer'
+      POSTGRES_USER: 'root'
+      POSTGRES_PASSWORD: 'root'
+    ports:
+      - 5432:5432
